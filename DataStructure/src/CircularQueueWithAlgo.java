@@ -1,9 +1,9 @@
-public class CircularQueue<X> {
+public class CircularQueueWithAlgo<X> {
     private X [] array;
     private int front =-1;
     private int end =-1;
     private int size=0;
-    public CircularQueue(int size){
+    public CircularQueueWithAlgo(int size){
         this.size=size;
         array = (X[]) new Object[size];
     }
@@ -11,7 +11,7 @@ public class CircularQueue<X> {
     private int currentSize=-1;
 
     public static void main(String[] args) throws IllegalAccessException{
-        CircularQueue<Integer> circularQueue = new CircularQueue<>(10);
+        CircularQueueWithAlgo<Integer> circularQueue = new CircularQueueWithAlgo<>(10);
 
         circularQueue.enQueue(1);
         circularQueue.enQueue(2);
@@ -66,7 +66,7 @@ public class CircularQueue<X> {
     private X deQueue() throws IllegalAccessException{
 
 
-        if (currentSize<0){
+        if (front ==(front+1)%size){
             throw new IllegalAccessException("Queue has no element");
         }
         currentSize--;
@@ -87,7 +87,7 @@ public class CircularQueue<X> {
         }
 
         //check if queue is full.
-        if(currentSize==10){
+        if( end==(end+1)%size){
             throw new IllegalAccessException("Queue Is full : "+front+":"+end);
 
         }
